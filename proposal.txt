@@ -1,0 +1,24 @@
+Term Project:
+Galagagalag
+
+Description:
+	This project will be a top-down space shooter in the style of the classic arcade game Galaga. The player will play as a space ship, with the purpose of lasting as long as possible against an infinite amount of procedurally (and randomly) generated waves of enemies. Movement is done by using the arrow keys/WASD. Randomly when enemies are defeated, they will drop powerups (or powerdowns, which are rarer), which can affect the player's stats. The player can also press the left shift key for a very short burst of speed in the direction they're moving. There are also different types of enemies; some keep at a distance from the player and fire at them, others will gradually move towards the player, and one type may divebomb the player. There will also be a ship editor in the style of a paint program, where the player can export and play as their ship.
+
+Competitive Analysis:
+	The primary game this will be compared to is Galaga, the classic arcade space shooter (which can be played online at http://www.classicgamesarcade.com/game/21637/galaga.html). This project differs from Galaga in several ways. First of all, the player can move on the y-axis as well as the x-axis, where Galaga was only confined to the x-axis. Additionally, the player has more freedom of movement than in the original Galaga because my game has a dash mechanic, which lets the player briefly speed up in any direction. My game will also have power-ups, which the original Galaga lacked, and the enemies will behave in different ways than in the original (in Galaga, many enemies fly in and then just kind of wait to get shot before even reaching another attack phase). Finally, this game will have powerups, which the original Galaga lacked.
+	Given Galaga's popularity and influence, this is of course not the only Galaga-like game; another game fairly similar to my project is Galagian (http://www.flasharcade.com/action-games/play/galagian.html). Galagian has full range of movement, however my project will differ because I am using the arrow keys to move the ship, where Galagian uses the mouse. Additionally, Galagian has autofire, but the player is unrestricted in how fast the autofire occurs; in my game, there is a mandatory cooldown between shots, whether autofire is used or not. Galagian also has power-ups, but they are given after enough small items are collected and after waves end. In my game,  powerups are random drops and are not tied to pickups. Galagian's firing powerups also cap differently than mine will (and the firing is more of a spread, where mine will mainly be straight shots), and its general graphic style looks different than how mine will look (mine is very 8-bit).
+
+Structural Plan:
+The finalized project will be organized and structured according to Lukas Peraza's template. There will be a main Game class which inherits from Lukas's Pygamegame class, which controls functions such as isKeyPressed and redrawAll. Lukas's GameObject class will also be used, and will be the superclass of all objects within the game. The main superclasses, such as Player, Enemy, and Attack, will be separate files which are then imported into the Game class, and each of these main superclasses will have subclasses within them (for example, PlayerLaser).
+
+Algorithmic Plan:
+The trickiest part of the project is probably going to be the ship editor. First, I'll have to get the ship image and then display it, shown rather large, in the window. I will then have to determine where to place colors and the eraser, and how to allow the player to select these (i.e., is there a prebuilt-in module)
+
+Timeline Plan:
+
+
+Version Control Plan:
+I plan on backing up my code using GitHub. My project will be backed up every day that work is done on it, even if modifications are not major changes or contributions.
+
+Module List:
+pygame (Approved)
