@@ -1,5 +1,5 @@
 # Joey Perrino, Andrew ID: jperrino; for the 2018 Spring 15-112 Term Project
-# NOTE: This file was made by Lukas Peraza. 
+# NOTE: This file was made by Lukas Peraza.
 # It has been modified from the original work, but the main structure is his.
 
 '''
@@ -39,7 +39,7 @@ class PygameGame(object):
     def mouseDrag(self, x, y):
         pass
 
-    # modifier parameter removed
+    # Parameter modifier removed
     def keyPressed(self, keyCode):
         pass
 
@@ -93,7 +93,7 @@ class PygameGame(object):
                     self.mouseDrag(*(event.pos))
                 elif event.type == pygame.KEYDOWN:
                     self._keys[event.key] = True
-                    # event.mod parameter removed
+                    # Parameter event.mod removed
                     self.keyPressed(event.key)
                 elif event.type == pygame.KEYUP:
                     self._keys[event.key] = False
