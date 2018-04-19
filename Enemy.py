@@ -9,24 +9,23 @@ from GameObject import GameObject
 class Enemy(GameObject):
     
     # Initialize data
-    def __init__(self, x, y, image, xradius, yradius, hp, velocity, attChance):
+    def __init__(self, x, y, image, xradius, yradius, hp, velocity, attChance, 
+        score):
         # Set x, y, image, and xy radii
         self.x, self.y = x, y
         self.image = image
         self.xradius, self.yradius = xradius, yradius
         # Call to superclass GameObject
         super(Enemy, self).__init__(x, y, image, xradius, yradius)
-        # Set the enemy's hp value; currently unused
+        # Set the enemy's hp and score value
         self.hp = hp
+        self.score = score
         # Set velocity and attack chance
         self.velocity = velocity
         self.attChance = attChance
     
     # Update the Enemy objects
     def update(self, screenWidth, screenHeight):
-        # Kill enemy when its HP becomes 0
-        if self.hp == 0:
-            self.kill()
         # Call to superclass GameObject
         super(Enemy, self).update(screenWidth, screenHeight)
 
@@ -51,14 +50,15 @@ class Invader(Enemy):
     def __init__(self, x, y):
         # Set xy radii
         xradius, yradius = 41, 30
-        # Invader HP value; currently unused
+        # Invader HP and score value
         hp = 5
+        score = 10
         # Set velocity and attack chance
         velocity = [4, 4]
         attChance = 30
         # Call to superclass Enemy
         super(Invader, self).__init__(x, y, Invader.invaderImage, xradius, 
-            yradius, hp, velocity, attChance)
+            yradius, hp, velocity, attChance, score)
         # Set empty count of y moves and a boolean allowing movement on x axis
         self.yMoveCount = 0
         self.xMove = True

@@ -33,6 +33,8 @@ class GameObject(pygame.sprite.Sprite):
     # Update the object
     # References to velocity removed because each object moves differently
     def update(self, screenWidth, screenHeight):
+        # Set the amount of padding to make room for top and bottom bars
+        ypadding = 48
         # Update bounding
         self.updateRect()
         # Check if object is within bounds
@@ -40,9 +42,9 @@ class GameObject(pygame.sprite.Sprite):
             self.x = screenWidth - self.width / 2
         elif self.rect.left < 0:
             self.x = self.width / 2
-        if self.rect.bottom > screenHeight:
-            self.y = screenHeight - self.height / 2
-        elif self.rect.top < 0:
-            self.y = self.height / 2
+        if self.rect.bottom > screenHeight - ypadding:
+            self.y = screenHeight - self.height / 2 - ypadding
+        elif self.rect.top < ypadding:
+            self.y = self.height / 2 + ypadding
         # Update the bounding again
         self.updateRect()

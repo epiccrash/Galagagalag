@@ -24,22 +24,25 @@ class Player(GameObject):
         super(Player, self).__init__(x, y, Player.playerImage, self.radius, 
             self.radius)
         # Create invulnerability time counter; currently unused
-        self.invulnTime = 0
+        self.invulnTime = 1000
+        self.maxInvulnTime = 1000
         # Store velocity in a list because powerups might increase it
         self.velocity = [8, 8]
         # Define bonus to speed when dashing
         self.dashSpeedBonus = 20
         # Define the speed up time and cooldown time between dashes
-        self.speedUpTime = 8
-        self.rechargeTime = 7
+        self.speedUpTime = 10
+        self.rechargeTime = 8
         # Set a cooldown counter and a boolean for if the dash is enabled
         self.cooldownCount = 0
         self.speedUpEnabled = True
+        # Set a boolean to track if player is dashing
+        self.dashing = False
     
     # Update the Player object
     def update(self, dt, keysDown, screenWidth, screenHeight):
         # Invulnerability frame increase; currently unused
-        self.invulnTime += 1
+        self.invulnTime += 5
 
         # Check for key holds to change x, y position
         if (keysDown(pygame.K_LEFT) or keysDown(pygame.K_a)):
@@ -59,7 +62,10 @@ class Player(GameObject):
             self.velocity[1] += self.dashSpeedBonus
             # Increase the cooldown count (not actually cooling down yet)
             self.cooldownCount += 1
-            # Change player opacity for effect
+            self.dashing = True
+
+        # Change player opacity for effect
+        if self.dashing:
             Player.playerImage.set_alpha(175)
         
         # If the player has dashed long enough, stop the dash
@@ -70,8 +76,11 @@ class Player(GameObject):
             # Reset the cooldown count to 1 and disable the dash
             self.cooldownCount = 1
             self.speedUpEnabled = False
+            # Say player is not dashing
+            self.dashing = False
             # Rest the player's opacity
-            Player.playerImage.set_alpha(255)
+            if not self.isInvulnerable():
+                Player.playerImage.set_alpha(255)
         
         # Check if the dash is not enabled, but the recharge time is hit
         if not self.speedUpEnabled and self.cooldownCount == self.rechargeTime:
@@ -85,6 +94,17 @@ class Player(GameObject):
         # Call to superclass GameObject
         super(Player, self).update(screenWidth, screenHeight)
     
-    # Check if player is invulnerabile (currently unused, taken from Lukas)
+    # Check if player is invulnerable
     def isInvulnerable(self):
-        return self.maxInvulnTime > self.invulnTime
+        # Change the sprite's opacity (causing a flashing motion) if so
+        if self.maxInvulnTime > self.invulnTime:
+            if self.invulnTime % 10 >= 0 and self.invulnTime % 10 <= 4:
+                Player.playerImage.set_alpha(0)
+            else:
+                Player.playerImage.set_alpha(145)
+            # The player is invulnerable
+            return True
+        # Otherwise, reset the opacity; the player is not invulnerable
+        Player.playerImage.set_alpha(255)
+        return False
+    

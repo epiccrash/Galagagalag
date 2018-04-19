@@ -28,8 +28,11 @@ class Laser(GameObject):
         self.x += vx
         self.y += vy
         self.updateRect()
+        # Set vertical padding
+        ypadding = 48
         # Kill the laser sprite if it goes out of bounds
-        if self.y + self.yradius < 0 or self.y - self.yradius > screenHeight:
+        if (self.y + self.yradius < ypadding or 
+            self.y - self.yradius > screenHeight - ypadding):
             self.kill()
 
 # Subclass Player Laser object
