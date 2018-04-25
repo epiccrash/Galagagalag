@@ -24,9 +24,8 @@ class Laser(GameObject):
     # Update the laser object; override superclass update method
     def update(self, screenWidth, screenHeight):
         # Get x velocity and y velocity and update the bounding rectangle
-        vx, vy = self.velocity
-        self.x += vx
-        self.y += vy
+        self.x += self.velocity[0]
+        self.y += self.velocity[1]
         self.updateRect()
         # Set vertical padding
         ypadding = 48

@@ -43,7 +43,7 @@ class GameObject(pygame.sprite.Sprite):
         elif self.rect.left < 0:
             self.x = self.width / 2
         if self.rect.bottom > screenHeight - ypadding:
-            self.y = screenHeight - self.height / 2 - ypadding
+            self.y = screenHeight - ypadding - self.height / 2
         elif self.rect.top < ypadding:
             self.y = self.height / 2 + ypadding
         # Update the bounding again

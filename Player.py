@@ -40,10 +40,25 @@ class Player(GameObject):
         self.dashing = False
     
     # Update the Player object
-    def update(self, dt, keysDown, screenWidth, screenHeight):
-        # Invulnerability frame increase; currently unused
+    def update(self, keysDown, screenWidth, screenHeight):
+        # Invulnerability frame increase
         self.invulnTime += 5
 
+        # Update player based on keypresses
+        self.updateKeys(keysDown)
+
+        # Change player opacity for effect
+        if self.dashing:
+            Player.playerImage.set_alpha(175)
+        
+        # Update player and dash state
+        self.updateDash()
+          
+        # Call to superclass GameObject
+        super(Player, self).update(screenWidth, screenHeight)
+    
+    # Updates player movement based on keypresses
+    def updateKeys(self, keysDown):
         # Check for key holds to change x, y position
         if (keysDown(pygame.K_LEFT) or keysDown(pygame.K_a)):
             self.x -= self.velocity[0]
@@ -63,11 +78,9 @@ class Player(GameObject):
             # Increase the cooldown count (not actually cooling down yet)
             self.cooldownCount += 1
             self.dashing = True
-
-        # Change player opacity for effect
-        if self.dashing:
-            Player.playerImage.set_alpha(175)
-        
+    
+    # Update the state of the player's dash and whether player is dashing
+    def updateDash(self):
         # If the player has dashed long enough, stop the dash
         if self.cooldownCount == self.speedUpTime:
             # Reset velocity to original values
@@ -81,7 +94,6 @@ class Player(GameObject):
             # Rest the player's opacity
             if not self.isInvulnerable():
                 Player.playerImage.set_alpha(255)
-        
         # Check if the dash is not enabled, but the recharge time is hit
         if not self.speedUpEnabled and self.cooldownCount == self.rechargeTime:
             # If so, reset the cooldown count to 0 and enable the dash
@@ -90,9 +102,6 @@ class Player(GameObject):
         # Otherwise, if the cooldown count can increase, increase it
         elif self.cooldownCount > 0 and self.cooldownCount < self.speedUpTime:
             self.cooldownCount += 1
-          
-        # Call to superclass GameObject
-        super(Player, self).update(screenWidth, screenHeight)
     
     # Check if player is invulnerable
     def isInvulnerable(self):
