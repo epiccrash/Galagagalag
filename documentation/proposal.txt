@@ -2,7 +2,7 @@ Term Project:
 Galagagalag
 
 Description:
-	This project will be a top-down space shooter in the style of the classic arcade game Galaga. The player will play as a space ship, with the purpose of lasting as long as possible against an infinite amount of procedurally (and randomly) generated waves of enemies. Movement is done by using the arrow keys/WASD. Randomly when enemies are defeated, they will drop powerups (or powerdowns, which are rarer), which can affect the player's stats. The player can also press the left shift key for a very short burst of speed in the direction they're moving. There are also different types of enemies; some gradually move towards the player and fire at them, another type divebombs the player, and another type surrounds the player in a semicircle. There will also be a ship editor in the style of a paint program, where the player can export and play as their ship.
+	This project will be a top-down space shooter in the style of the classic arcade game Galaga. The player will play as a space ship, with the purpose of lasting as long as possible against an infinite amount of procedurally (and randomly) generated waves of enemies. Movement is done by using the arrow keys/WASD. Randomly when enemies are defeated, they will drop powerups (or powerdowns, which are rarer), which can affect the player's stats. The player can also press the left shift key for a very short burst of speed in the direction they're moving. There are also different types of enemies; some keep at a distance from the player and fire at them, others will gradually move towards the player, and one type may divebomb the player. There will also be a ship editor in the style of a paint program, where the player can export and play as their ship.
 
 Competitive Analysis:
 	The primary game this will be compared to is Galaga, the classic arcade space shooter (which can be played online at http://www.classicgamesarcade.com/game/21637/galaga.html). This project differs from Galaga in several ways. First of all, the player can move on the y-axis as well as the x-axis, where Galaga was only confined to the x-axis. Additionally, the player has more freedom of movement than in the original Galaga because my game has a dash mechanic, which lets the player briefly speed up in any direction. My game will also have power-ups, which the original Galaga lacked (other than double shot), and the enemies will behave in different ways than in the original (in Galaga, many enemies fly in and then just kind of wait to get shot before reaching an attack phase). Finally, this game will have powerups, which the original Galaga lacked.
@@ -33,10 +33,10 @@ By TP2:
 	Sunday (or sooner): Creating stars in background
 By TP3:
 	Tuesday: Title screen
-	Tuesday: Custom font
-	Friday: Help screen
-	Friday-???: Ship editor
+	Tuesday: Help screen
+	Tuesday-???: Ship editor
 	(Stretch goal) Xbox controller compatibility
+	(Stretch goal, unless it's easier than I think) Custom font
 	(Stretch goal) Bosses
 	(Stretch goal) Damage smoke/Ship jet trail
 	(Stretch goal) More complex powerups
@@ -48,3 +48,8 @@ I plan on backing up my code using GitHub. My project will be backed up every da
 
 Module List:
 pygame (Approved)
+
+TP2 Update:
+- One enemy type now orbits the player in a semicircle instead of a circle.
+- Only one enemy type actually shoots and approaches the player (might be changed later).
+- Custom font was loaded in before TP2 instead of waiting for TP3.
