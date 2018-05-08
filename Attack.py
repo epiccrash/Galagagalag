@@ -1,5 +1,7 @@
 # Joey Perrino, Andrew ID: jperrino; for the 2018 Spring 15-112 Term Project
 
+# Handles player and enemy attack creation and updating.
+
 # Module import
 import pygame
 # Class import

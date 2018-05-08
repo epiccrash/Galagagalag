@@ -1,5 +1,7 @@
 # Joey Perrino, Andrew ID: jperrino; for the 2018 Spring 15-112 Term Project
 
+# Defines and creates the star objects on screen.
+
 # Module imports
 import pygame
 import random

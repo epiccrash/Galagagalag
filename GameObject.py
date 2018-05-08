@@ -1,4 +1,7 @@
 # Joey Perrino, Andrew ID: jperrino; for the 2018 Spring 15-112 Term Project
+
+# Provides structure for subclasses.
+
 # NOTE: This file was made by Lukas Peraza.
 # It has been modified from the original work, but the main structure is his.
 

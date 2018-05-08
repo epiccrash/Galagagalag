@@ -53,3 +53,7 @@ TP2 Update:
 - One enemy type now orbits the player in a semicircle instead of a circle.
 - Only one enemy type actually shoots and approaches the player (might be changed later).
 - Custom font was loaded in before TP2 instead of waiting for TP3.
+
+TP3 Update:
+- Added in the ship editor and Xbox controller support.
+- Made slight modifications to a couple existing items.

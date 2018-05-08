@@ -1,5 +1,7 @@
 # Joey Perrino, Andrew ID: jperrino; for the 2018 Spring 15-112 Term Project
 
+# Defines, creates, and updates the three types of enemies and their superclass.
+
 # Module imports
 import pygame
 import copy
@@ -152,7 +154,9 @@ class DiveBomber(Enemy):
         # Increase y velocity whether it's crawled in or not
         self.y += self.velocity[1]
         # Change x according to the destination x (where the player is)
-        if self.x < self.destX:
+        if self.x < self.destX + 3 and self.x > self.destX - 3:
+            pass
+        elif self.x < self.destX:
             self.x += self.velocity[0]
         elif self.x > self.destX:
             self.x -= self.velocity[0]

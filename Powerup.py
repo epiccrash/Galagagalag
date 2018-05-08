@@ -1,5 +1,7 @@
 # Joey Perrino, Andrew ID: jperrino; for the 2018 Spring 15-112 Term Project
 
+# Creates and updates the four powerups/downs and their superclasses.
+
 # Module import
 import pygame
 # Class import

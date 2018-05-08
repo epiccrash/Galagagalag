@@ -1,5 +1,7 @@
 # Joey Perrino, Andrew ID: jperrino; for the 2018 Spring 15-112 Term Project
 
+# Handles player creation, movement, and updating.
+
 # Module import
 import pygame
 # Class import
@@ -40,12 +42,13 @@ class Player(GameObject):
         self.dashing = False
     
     # Update the Player object
-    def update(self, keysDown, screenWidth, screenHeight):
+    def update(self, keysDown, screenWidth, screenHeight, 
+        xAxisVal = 0, yAxisVal = 0, shift = False):
         # Invulnerability frame increase
         self.invulnTime += 5
 
         # Update player based on keypresses
-        self.updateKeys(keysDown)
+        self.updateKeys(keysDown, xAxisVal, yAxisVal, shift)
 
         # Change player opacity for effect
         if self.dashing:
@@ -58,7 +61,7 @@ class Player(GameObject):
         super(Player, self).update(screenWidth, screenHeight)
     
     # Updates player movement based on keypresses
-    def updateKeys(self, keysDown):
+    def updateKeys(self, keysDown, xAxisVal, yAxisVal, shift):
         # Check for key holds to change x, y position
         if (keysDown(pygame.K_LEFT) or keysDown(pygame.K_a)):
             self.x -= self.velocity[0]
@@ -68,10 +71,15 @@ class Player(GameObject):
             self.y -= self.velocity[1]
         elif (keysDown(pygame.K_DOWN) or keysDown(pygame.K_s)):
             self.y += self.velocity[1]
+            
+        if xAxisVal < -0.2 or xAxisVal > 0.2:
+            self.x += self.velocity[0] * xAxisVal            
+        if yAxisVal < -0.2 or yAxisVal > 0.2:
+            self.y += self.velocity[0] * yAxisVal
 
         # If Left Shift is pressed and the player can speed up, make ship dash
-        if (keysDown(pygame.K_LSHIFT) and self.speedUpEnabled 
-            and self.cooldownCount == 0):
+        if ((keysDown(pygame.K_LSHIFT) or keysDown(pygame.K_RSHIFT) or shift) 
+            and self.speedUpEnabled and self.cooldownCount == 0):
             # Increase x and y velocity
             self.velocity[0] += self.dashSpeedBonus
             self.velocity[1] += self.dashSpeedBonus
@@ -116,4 +124,4 @@ class Player(GameObject):
         # Otherwise, reset the opacity; the player is not invulnerable
         Player.playerImage.set_alpha(255)
         return False
-    
+        
